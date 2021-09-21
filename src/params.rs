@@ -70,7 +70,7 @@ impl<'a> DecodedParamsReader<'a> {
 }
 
 /// A definition of a parameter of a function or event.
-#[derive(Debug, Deserialize, Serialize, Clone, PartialEq, Eq)]
+#[derive(Debug, Serialize, Clone, PartialEq, Eq)]
 pub struct Param {
     /// Parameter name.
     pub name: String,
