@@ -1,5 +1,6 @@
 use anyhow::{anyhow, Result};
 use ethereum_types::{H160, U256};
+use serde::{Deserialize, Serialize};
 
 use crate::types::Type;
 
