@@ -4,7 +4,7 @@ use ethereum_types::{H160, U256};
 use crate::types::Type;
 
 /// ABI decoded value.
-#[derive(Debug, Clone, Eq, PartialEq)]
+#[derive(Debug, Deserialize, Serialize, Clone, Eq, PartialEq)]
 pub enum Value {
     /// Unsigned int value (uint<M>).
     Uint(U256, usize),

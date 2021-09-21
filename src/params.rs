@@ -1,10 +1,10 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use std::{collections::HashMap, rc::Rc};
 
 use crate::{types::Type, Value};
 
 /// ABI decoded param value.
-#[derive(Debug, Clone, Eq, PartialEq)]
+#[derive(Debug, Deserialize, Serialize, Clone, Eq, PartialEq)]
 pub struct DecodedParam {
     // Param definition.
     pub param: Param,
@@ -70,7 +70,7 @@ impl<'a> DecodedParamsReader<'a> {
 }
 
 /// A definition of a parameter of a function or event.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Deserialize, Serialize, Clone, PartialEq, Eq)]
 pub struct Param {
     /// Parameter name.
     pub name: String,

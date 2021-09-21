@@ -1,5 +1,5 @@
 /// Available ABI types.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Deserialize, Serialize, Clone, PartialEq, Eq)]
 pub enum Type {
     /// Unsigned int type (uint<M>).
     Uint(usize),
