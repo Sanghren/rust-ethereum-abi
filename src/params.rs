@@ -21,7 +21,7 @@ impl From<(Param, Value)> for DecodedParam {
 /// ABI decoded values. Fast access by param index and name.
 ///
 /// This struct provides a way for accessing decoded param values by index and by name.
-#[derive(Debug, , Deserialize, Serialize, Clone, Eq, PartialEq)]
+#[derive(Debug, Deserialize, Serialize, Clone, Eq, PartialEq)]
 pub struct DecodedParams(Vec<DecodedParam>);
 
 impl DecodedParams {
