@@ -72,8 +72,8 @@ impl std::fmt::Display for Type {
             Type::String => write!(f, "string"),
             Type::FixedBytes(size) => write!(f, "bytes{}", size),
             Type::Bytes => write!(f, "bytes"),
-            Type::FixedArray(ty, size) => write!(f, "----{}[{}]", ty, size),
-            Type::Array(ty) => write!(f, "----{}[]", ty),
+            Type::FixedArray(ty, size) => write!(f, "{}[{}]", ty, size),
+            Type::Array(ty) => write!(f, "{}[]", ty),
             Type::Tuple(tys) => write!(
                 f,
                 "({})",
