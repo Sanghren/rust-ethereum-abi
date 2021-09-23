@@ -75,7 +75,7 @@ pub struct Param {
     /// Parameter name.
     pub name: String,
     /// Parameter type.
-    #[serde(rename(serialize = "type_", deserialize = "type"))]
+    #[serde(rename(serialize = "type", deserialize = "type"))]
     pub type_: Type,
     /// Whether it is an indexed parameter (events only).
     pub indexed: Option<bool>,
