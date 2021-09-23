@@ -26,23 +26,23 @@ pub enum Type {
     Tuple(Vec<(String, Type)>),
 }
 
-impl<'a> Deserialize<'a> for Type {
-    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: serde::Deserializer<'a>,
-    {
-        let entry: ParamEntry = Deserialize::deserialize(deserializer)?;
-
-        let (_, ty) = parse_exact_type(Rc::new(entry.components), &entry.type_)
-            .map_err(|e| serde::de::Error::custom(e.to_string()))?;
-
-        Ok(Type {
-            name: entry.name.to_string(),
-            type_: ty,
-            indexed: entry.indexed,
-        })
-    }
-}
+// impl<'a> Deserialize<'a> for Type {
+//     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+//         where
+//             D: serde::Deserializer<'a>,
+//     {
+//         let entry: ParamEntry = Deserialize::deserialize(deserializer)?;
+//
+//         let (_, ty) = parse_exact_type(Rc::new(entry.components), &entry.type_)
+//             .map_err(|e| serde::de::Error::custom(e.to_string()))?;
+//
+//         Ok(Type {
+//             name: entry.name.to_string(),
+//             type_: ty,
+//             indexed: entry.indexed,
+//         })
+//     }
+// }
 
 impl Type {
     /// Returns whether the given type is a dynamic size type or not.
