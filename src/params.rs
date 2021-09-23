@@ -88,7 +88,7 @@ impl<'a> Deserialize<'a> for Param {
     {
         let entry: ParamEntry = Deserialize::deserialize(deserializer)?;
 
-        let (_, ty) = parse_exact_type(Rc::new(entry.components), &entry.type_)
+        let (_, ty) = parse_exact_type(Rc::new(entry.components), &entry.type_.to_string())
             .map_err(|e| serde::de::Error::custom(e.to_string()))?;
 
         Ok(Param {
@@ -103,7 +103,7 @@ impl<'a> Deserialize<'a> for Param {
 struct ParamEntry {
     pub name: String,
     #[serde(rename = "type")]
-    pub type_: String,
+    pub type_: Type,
     pub indexed: Option<bool>,
     pub components: Option<Vec<ParamEntry>>,
 }
@@ -253,7 +253,7 @@ fn parse_tuple(
                         None => None,
                     };
 
-                    let ty = match parse_exact_type(Rc::new(comps), &param.type_) {
+                    let ty = match parse_exact_type(Rc::new(comps), &param.type_.to_string()) {
                         Ok((_, ty)) => ty,
                         Err(_) => return Err(nom::Err::Failure(TypeParseError::Error)),
                     };

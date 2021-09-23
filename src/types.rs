@@ -36,11 +36,7 @@ pub enum Type {
 //         let (_, ty) = parse_exact_type(Rc::new(entry.components), &entry.type_)
 //             .map_err(|e| serde::de::Error::custom(e.to_string()))?;
 //
-//         Ok(Type {
-//             name: entry.name.to_string(),
-//             type_: ty,
-//             indexed: entry.indexed,
-//         })
+//         Ok(Type)
 //     }
 // }
 
