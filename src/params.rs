@@ -88,7 +88,7 @@ impl<'a> Deserialize<'a> for Param {
     {
         let entry: ParamEntry = Deserialize::deserialize(deserializer)?;
         println!("TEST - A");
-        let (_, ty) = parse_exact_type(Rc::new(entry.components), &entry.type_.to_string())
+        let (_, ty) = parse_exact_type(Rc::new(entry.components), &entry.type_)
             .map_err(|e| serde::de::Error::custom(e.to_string()))?;
 
         Ok(Param {
@@ -103,7 +103,7 @@ impl<'a> Deserialize<'a> for Param {
 struct ParamEntry {
     pub name: String,
     #[serde(rename = "type")]
-    pub type_: Type,
+    pub type_: String,
     pub indexed: Option<bool>,
     pub components: Option<Vec<ParamEntry>>,
 }
