@@ -87,7 +87,7 @@ impl<'a> Deserialize<'a> for Param {
         D: serde::Deserializer<'a>,
     {
         let entry: ParamEntry = Deserialize::deserialize(deserializer)?;
-
+        println!("TEST - A");
         let (_, ty) = parse_exact_type(Rc::new(entry.components), &entry.type_.to_string())
             .map_err(|e| serde::de::Error::custom(e.to_string()))?;
 
@@ -252,6 +252,7 @@ fn parse_tuple(
                         Some(comps) => Some(comps.clone()),
                         None => None,
                     };
+                    println!("TEST - B");
 
                     let ty = match parse_exact_type(Rc::new(comps), &param.type_.to_string()) {
                         Ok((_, ty)) => ty,
