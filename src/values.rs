@@ -327,7 +327,7 @@ impl Value {
                     .ok_or_else(|| anyhow!("reached end of input while decoding array length"))?;
                 let array_len = U256::from_big_endian(slice).as_usize();
 
-                let (arr, _) = Self::decode(bs, &Type::FixedArray(ty.clone(), array_len), 32, 0)?;
+                let (arr, _) = Self::decode(bs, &Type::FixedArray(ty.clone(), array_len), 32, at)?;
 
                 let values = if let Value::FixedArray(values, _) = arr {
                     values
